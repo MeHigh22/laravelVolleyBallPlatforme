@@ -9,7 +9,7 @@ class Photo extends Model
 {
     use HasFactory;
 
-    public function player(){
+    public function players(){
         return $this->hasOne(Player::class);
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Continent extends Model
 {
     use HasFactory;
-    public function team(){
+    public function teams(){
         return $this->hasMany(Team::class, "continent_id");
     }
 }

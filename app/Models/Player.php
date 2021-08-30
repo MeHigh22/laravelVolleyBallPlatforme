@@ -9,15 +9,15 @@ class Player extends Model
 {
     use HasFactory;
 
-    public function team(){
+    public function teams(){
         return $this->belongsTo(Team::class, "team_id");
     }
 
-    public function role(){
+    public function roles(){
         return $this->belongsTo(Role::class, "role_id");
     }
 
-    public function photo(){
+    public function photos(){
         return $this->belongsTo(Photo::class, "photo_id");
     }
 }

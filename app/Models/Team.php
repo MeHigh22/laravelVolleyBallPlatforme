@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
-    public function continent(){
+    public function continents(){
         return $this->belongsTo(Continent::class, 'continent_id');
     }
 
-    public function player(){
+    public function players(){
         return $this->hasMany(Player::class, "team_id");
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-    public function player(){
+    public function players(){
         return $this->hasMany(Player::class);
     }
 }

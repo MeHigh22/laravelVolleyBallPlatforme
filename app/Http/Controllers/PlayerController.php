@@ -74,7 +74,7 @@ class PlayerController extends Controller
         $store->team_id = $request->team_id;
         $store->save();
 
-        return redirect("player.index")->with("success", "Un joueur a bien été crée");
+        return redirect("player")->with("success", "Un joueur a bien été crée");
     }
 
     /**

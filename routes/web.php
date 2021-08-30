@@ -23,3 +23,4 @@ Route::get("/teams", [FrontController::class,"teams"]);
 Route::resource('admin/players', PlayerController::class);
 Route::resource('admin/teams', TeamController::class);
 
+Route::get('/admin', [FrontController::class, 'admin']);

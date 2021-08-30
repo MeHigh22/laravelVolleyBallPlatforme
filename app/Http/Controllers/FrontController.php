@@ -26,4 +26,9 @@ class FrontController extends Controller
         return view("pages.teams", compact("teams"));
     }
 
+    public function admin()
+    {
+        return view('admin.adminWelcome');
+    }
+
 }

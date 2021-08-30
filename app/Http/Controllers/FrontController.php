@@ -20,7 +20,7 @@ class FrontController extends Controller
     }
 
     //Afficher les équipes
-    
+
     public function teams(){
         $teams = Team::all();
         return view("pages.teams", compact("teams"));

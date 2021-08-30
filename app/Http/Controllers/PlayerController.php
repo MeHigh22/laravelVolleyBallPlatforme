@@ -32,7 +32,7 @@ class PlayerController extends Controller
         $photos = Photo::all();
         $roles = Role::all();
         $teams = Team::all();
-        return view("admin.players.create", compact('genres', "roles", "teams"));
+        return view("admin.players.playersCreate", compact('photos', "roles", "teams"));
 
     }
 

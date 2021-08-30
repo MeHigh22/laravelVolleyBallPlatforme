@@ -38,13 +38,13 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'club' => ['required', 'min:5'],
-            'city' => ['required', 'min:5'],
-            'country' => ['required', 'min:5'],
-            'continent_id' => ['required'],
-            'maxplayers' => ['required', 'numeric'],
-        ]);
+        // $request->validate([
+        //     'club' => ['required', 'min:5'],
+        //     'city' => ['required', 'min:5'],
+        //     'country' => ['required', 'min:5'],
+        //     'continent_id' => ['required'],
+        //     'maxplayers' => ['required', 'numeric'],
+        // ]);
 
         $store = new Team();
         $store->club = $request->club;

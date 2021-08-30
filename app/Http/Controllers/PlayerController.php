@@ -43,18 +43,18 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            "name" => ["required"],
-            "lastname" => ["required"],
-            "sex" => ["required"],
-            "age" => ["required", "numeric"],
-            "phone" => ["required", "numeric"],
-            "email" => ["required", "email"],
-            "country" => ["required"],
-            "photo_id" => ["required"],
-            "role_id" => ["required"],
-            "team_id" => ["required"],
-        ]);
+        // $request->validate([
+        //     "name" => ["required"],
+        //     "lastname" => ["required"],
+        //     "sex" => ["required"],
+        //     "age" => ["required", "numeric"],
+        //     "phone" => ["required", "numeric"],
+        //     "email" => ["required", "email"],
+        //     "country" => ["required"],
+        //     "photo_id" => ["required"],
+        //     "role_id" => ["required"],
+        //     "team_id" => ["required"],
+        // ]);
 
         $photo = new Photo();
         $photo->src = $request->file("src")->hashName();
@@ -83,10 +83,9 @@ class PlayerController extends Controller
      * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Player $player)
     {
-        $show = Player::find($id);
-        return view("admin.players.playersShow", compact("show"));
+        return view("admin.players.playersShow", compact("player"));
     }
 
     /**
@@ -95,13 +94,11 @@ class PlayerController extends Controller
      * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Player $player)
     {
-        $edit = Player::find($id);
-        $photos = Photo::all();
         $roles = Role::all();
         $teams = Team::all();
-        return view ("admin.players.playersEdit", compact("edit", "photos", "roles", "teams"));
+        return view ("admin.players.playersEdit", compact("player", "roles", "teams"));
     }
 
     /**
@@ -114,16 +111,16 @@ class PlayerController extends Controller
     public function update(Request $request, $id, Player $player)
     {
         $request->validate([
-            "name" => ["required"],
-            "lastname" => ["required"],
-            "sex" => ["required"],
-            "age" => ["required", "numeric"],
-            "phone" => ["required", "numeric"],
-            "email" => ["required", "email"],
-            "country" => ["required"],
-            "photo_id" => ["required"],
-            "role_id" => ["required"],
-            "team_id" => ["required"],
+            'name' => ["required"],
+            'lastname' => ["required"],
+            'sex' => ["required"],
+            'age' => ["required", "numeric"],
+            'phone' => ["required", "numeric"],
+            'email' => ["required", "email"],
+            'country' => ["required"],
+            'photo_id' => ["required"],
+            'role_id' => ["required"],
+            'team_id' => ["required"],
         ]);
 
 

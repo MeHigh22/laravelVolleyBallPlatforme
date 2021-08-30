@@ -42,7 +42,7 @@
 <div class="min-h-screen p-0 bg-gray-100 sm:p-12">
   <div class="max-w-md px-6 py-12 mx-auto bg-white border-0 shadow-lg sm:rounded-3xl">
     <h1 class="mb-8 text-2xl font-bold">Add a player</h1>
-    <form id="form" action={{route('player.store')}} method="POST">
+    <form id="form" action={{route('player.store')}} method="POST" enctype="multipart/form-data">
         @csrf
       <div class="relative z-0 w-full mb-5">
         <input
@@ -79,8 +79,8 @@
           <option value="2">Femme</option>
           <option value="2">Autre</option>
         </select>
-        <label for="sex" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Select a sex</label>
-        <span class="hidden text-sm text-red-600" id="error">Sex has to be selected</span>
+        <label for="sex" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Select a gender</label>
+        <span class="hidden text-sm text-red-600" id="error">Gender has to be selected</span>
       </div>
 
       <div class="relative z-0 w-full mb-5">
@@ -118,34 +118,44 @@
       <div class="relative z-0 w-full mb-5">
         <input
           type="file"
-          name="photo_id"
+          name="src"
           placeholder=" "
           class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
         />
-        <label for="photo_id" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Photo of the player</label>
+        <label for="src" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Photo of the player</label>
         <span class="hidden text-sm text-red-600" id="error">Photo is required</span>
       </div>
 
-      <div class="relative z-0 w-full mb-5">
-        <input
-          type="text"
+    <div class="relative z-0 w-full mb-5">
+        <select
           name="role_id"
-          placeholder=""
-          class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
-        />
-        <label for="role_id" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Role</label>
-        <span class="hidden text-sm text-red-600" id="error">Pick a Role</span>
+          value=""
+          onclick="this.setAttribute('value', this.value);"
+          class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black"
+        >
+          <option value="" selected disabled hidden></option>
+          @foreach ($roles as $role)
+        <option value="{{ $role->id}}">{{ $role->role }}</option>
+          @endforeach
+        </select>
+        <label for="role_id" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Select a Role</label>
+        <span class="hidden text-sm text-red-600" id="error">Team has to be selected</span>
       </div>
 
-      <div class="relative z-0 w-full mb-5">
-        <input
-          type="text"
+     <div class="relative z-0 w-full mb-5">
+        <select
           name="team_id"
-          placeholder=" "
-          class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
-        />
-        <label for="team_id" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Team </label>
-        <span class="hidden text-sm text-red-600" id="error">Team is required</span>
+          value=""
+          onclick="this.setAttribute('value', this.value);"
+          class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black"
+        >
+          <option value="" selected disabled hidden></option>
+          @foreach ($teams as $team)
+        <option value="{{ $team->id}}">{{ $team->club }}</option>
+          @endforeach
+        </select>
+        <label for="team_id" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Select a Team</label>
+        <span class="hidden text-sm text-red-600" id="error">Team has to be selected</span>
       </div>
 
 
@@ -155,7 +165,7 @@
         type="submit"
         class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear bg-blue-500 rounded-lg shadow outline-none hover:bg-pink-600 hover:shadow-lg focus:outline-none"
       >
-        Create a team
+        Create a player
       </button>
     </form>
   </div>

@@ -20,7 +20,7 @@ Route::get("/", [FrontController::class, "welcome"]);
 Route::get("/players", [FrontController::class,"players"]);
 Route::get("/teams", [FrontController::class,"teams"]);
 
-Route::resource('admin/players', PlayerController::class);
-Route::resource('admin/teams', TeamController::class);
+Route::resource('player', PlayerController::class);
+Route::resource('team', TeamController::class);
 
-Route::get('/admin', [FrontController::class, 'admin']);
+Route::get('/adminHome', [FrontController::class, 'admin']);

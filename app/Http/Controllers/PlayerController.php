@@ -62,9 +62,6 @@ class PlayerController extends Controller
         Storage::put("public/img", $request->file("src"));
         $photo->save();
 
-        $role = new Role;
-        $team = new Team;
-
         $store = new Player;
         $store->name = $request->name;
         $store->lastname = $request->lastname;
@@ -73,12 +70,12 @@ class PlayerController extends Controller
         $store->phone = $request->phone;
         $store->email = $request->email;
         $store->country = $request->country;
-        $store->photo_id = $photo->id;
-        $store->role_id = $role->id;
-        $store->team_id = $team->id;
+        $store->photo_id = $request->photo_id;
+        $store->role_id = $request->role_id;
+        $store->team_id = $request->team_id;
         $store->save();
 
-        return redirect("admin.players.playersAll")->with("success", "Un joueur a bien été crée");
+        return redirect("player")->with("success", "Un joueur a bien été crée");
     }
 
     /**
@@ -90,7 +87,7 @@ class PlayerController extends Controller
     public function show($id)
     {
         $show = Player::find($id);
-        return view("admin.players.show", compact("show"));
+        return view("admin.players.playersShow", compact("show"));
     }
 
     /**
@@ -105,7 +102,7 @@ class PlayerController extends Controller
         $photos = Photo::all();
         $roles = Role::all();
         $teams = Team::all();
-        return view ("admin.players.playerEdit", compact("edit", "photos", "roles", "teams"));
+        return view ("admin.players.playersEdit", compact("edit", "photos", "roles", "teams"));
     }
 
     /**
@@ -150,7 +147,7 @@ class PlayerController extends Controller
             $update->save();
         }
 
-        return redirect("admin.players.playersAll")->with("message", "The Player has been modified");
+        return redirect("player")->with("message", "The Player has been modified");
 
     }
 

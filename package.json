@@ -18,6 +18,7 @@
         "tailwindcss": "^2.2.8"
     },
     "dependencies": {
-        "@popperjs/core": "^2.9.3"
+        "@popperjs/core": "^2.9.3",
+        "daisyui": "^1.14.0"
     }
 }

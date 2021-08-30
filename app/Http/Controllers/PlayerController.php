@@ -29,10 +29,9 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        $photos = Photo::all();
         $roles = Role::all();
         $teams = Team::all();
-        return view("admin.players.playersCreate", compact('photos', "roles", "teams"));
+        return view("admin.players.playersCreate", compact("roles", "teams"));
 
     }
 
@@ -44,7 +43,7 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+        $request->validate([
             "name" => ["required"],
             "lastname" => ["required"],
             "sex" => ["required"],
@@ -57,12 +56,12 @@ class PlayerController extends Controller
             "team_id" => ["required"],
         ]);
 
-        $photo = new Photo;
+        $photo = new Photo();
         $photo->src = $request->file("src")->hashName();
         Storage::put("public/img", $request->file("src"));
         $photo->save();
 
-        $store = new Player;
+        $store = new Player();
         $store->name = $request->name;
         $store->lastname = $request->lastname;
         $store->sex = $request->sex;
@@ -70,12 +69,12 @@ class PlayerController extends Controller
         $store->phone = $request->phone;
         $store->email = $request->email;
         $store->country = $request->country;
-        $store->photo_id = $request->photo_id;
+        $store->photo_id = $photo->id;
         $store->role_id = $request->role_id;
         $store->team_id = $request->team_id;
         $store->save();
 
-        return redirect("player")->with("success", "Un joueur a bien été crée");
+        return redirect("player.index")->with("success", "Un joueur a bien été crée");
     }
 
     /**
@@ -114,7 +113,7 @@ class PlayerController extends Controller
      */
     public function update(Request $request, $id, Player $player)
     {
-        request()->validate([
+        $request->validate([
             "name" => ["required"],
             "lastname" => ["required"],
             "sex" => ["required"],

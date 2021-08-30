@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Continent;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = Team::all();
+        return view("admin.teams.teamsAll", compact("teams"));
     }
 
     /**
@@ -24,7 +26,8 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        $continents = Continent::all();
+        return view("admin.teams.teamsCreate", compact("continents"));
     }
 
     /**
@@ -35,7 +38,23 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'club' => ['required', 'min:5'],
+            'city' => ['required', 'min:5'],
+            'country' => ['required', 'min:5'],
+            'continent_id' => ['required'],
+            'maxplayers' => ['required', 'numeric'],
+        ]);
+
+        $store = new Team();
+        $store->club = $request->club;
+        $store->city = $request->city;
+        $store->country = $request->country;
+        $store->continent_id = $request->continent_id;
+        $store->maxplayers = $request->maxplayers;
+        $store->save();
+        return redirect()->route("team.index")->with("success", "A team has been created !");
+
     }
 
     /**
@@ -46,7 +65,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        return view("admin.teams.teamsShow", compact("team"));
     }
 
     /**
@@ -57,7 +76,8 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        $continents = Continent::all();
+        return view("admin.teams.teamsEdit", compact("team", "continents"));
     }
 
     /**
@@ -69,8 +89,25 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $request->validate([
+            'club' => ['required', 'min:5'],
+            'city' => ['required', 'min:5'],
+            'country' => ['required', 'min:5'],
+            'continent_id' => ['required'],
+            'maxplayers' => ['required', 'numeric'],
+        ]);
+
+        $team->club = $request->club;
+        $team->city = $request->city;
+        $team->country = $request->country;
+        $team->continent_id = $request->continent_id;
+        $team->maxplayers = $request->maxplayers;
+        $team->save();
+        return redirect()->route("team.index")->with("success","The team has been updated successfully.");
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +117,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        return redirect()->route("team.index")->with("warning","The team has been deleted successfully.");
     }
 }

@@ -16,14 +16,14 @@ class FrontController extends Controller
 
     public function players(){
         $players = Player::all();
-        return view("pages.players", compact("players"));
+        return view("pages.allPlayers", compact("players"));
     }
 
     //Afficher les équipes
 
     public function teams(){
         $teams = Team::all();
-        return view("pages.teams", compact("teams"));
+        return view("pages.allTeams", compact("teams"));
     }
 
     public function admin()

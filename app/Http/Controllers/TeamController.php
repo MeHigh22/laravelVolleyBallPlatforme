@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Continent;
+use App\Models\Player;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -65,7 +66,8 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        return view("admin.teams.teamsShow", compact("team"));
+        $players = Player::all();
+        return view("admin.teams.teamsShow", compact("team", "players"));
     }
 
     /**

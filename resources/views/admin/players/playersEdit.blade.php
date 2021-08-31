@@ -153,7 +153,7 @@
         >
         <option value="" selected disabled hidden></option>
          @foreach ($roles as $role)
-                <option {{ $role->role == $player->roles->role ? 'selected' : '' }} value={{ $role->id }}>
+                <option {{ $role->role == $player->roles->role ? 'selected' : '' }} value="{{ $role->id }}"">
                 {{ $role->role }}</option>
                 @endforeach
         </select>
@@ -168,7 +168,7 @@
           class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black"
         >
           @foreach ($teams as $team)
-          <option> {{$team->name == $player->team->club ? "selected" : ""}} value={{$team->id}}->{{$team->club}} </option>
+          <option {{$team->name == $team->club ? "selected" : ""}} value={{$team->id}}>{{$team->club}}</option>
           @endforeach
         </select>
         <label for="team_id" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Team</label>

@@ -9,6 +9,7 @@
 </head>
 <body>
 @include("partials.navbarBack")
+@include("partials.flash")
 @yield("content")
 </body>
 </html>

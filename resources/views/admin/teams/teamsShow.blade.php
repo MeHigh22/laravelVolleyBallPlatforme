@@ -45,8 +45,21 @@
 
                     </div>
                 </div>
-        </div>
             </div>
+            <div class="w-full mt-8 lg:w-1/2">
+                <div class="lg:max-w-lg">
+                    <h1 class="text-2xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">List of players</h1>
+                    @foreach ($players as $player )
+
+                    @if ($player->id == $team->id)
+                    <h1>{{$player->name}} {{$player->lastname}}</h1>
+                    @else
+                    <h1>Il y a r frère</h1>
+                    @endif
+
+                    @endforeach
+
+        </div>
     </section>
 
 @endsection

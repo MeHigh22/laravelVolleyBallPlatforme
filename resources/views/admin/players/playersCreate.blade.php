@@ -86,9 +86,9 @@
           class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black"
         >
           <option value="" selected disabled hidden></option>
-          <option value="1">Homme</option>
-          <option value="2">Femme</option>
-          <option value="2">Autre</option>
+          <option value="Homme">Homme</option>
+          <option value="Femme">Femme</option>
+          <option value="Autre">Autre</option>
         </select>
         <label for="sex" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Select a gender</label>
         <span class="hidden text-sm text-red-600" id="error">Gender has to be selected</span>

@@ -110,18 +110,18 @@ class PlayerController extends Controller
      */
     public function update(Request $request, $id, Player $player)
     {
-        $request->validate([
-            'name' => ["required"],
-            'lastname' => ["required"],
-            'sex' => ["required"],
-            'age' => ["required", "numeric"],
-            'phone' => ["required", "numeric"],
-            'email' => ["required", "email"],
-            'country' => ["required"],
-            'photo_id' => ["required"],
-            'role_id' => ["required"],
-            'team_id' => ["required"],
-        ]);
+        // $request->validate([
+        //     'name' => ["required"],
+        //     'lastname' => ["required"],
+        //     'sex' => ["required"],
+        //     'age' => ["required", "numeric"],
+        //     'phone' => ["required", "numeric"],
+        //     'email' => ["required", "email"],
+        //     'country' => ["required"],
+        //     'photo_id' => ["required"],
+        //     'role_id' => ["required"],
+        //     'team_id' => ["required"],
+        // ]);
 
 
         $player->name = $request->name;
@@ -137,9 +137,9 @@ class PlayerController extends Controller
 
         $update = Photo::find($id);
         if($request->file("src") !== null){
-            Storage::delete("public/img" . $update->src);
+            Storage::delete("storage/img" . $update->src);
             $update->src = $request->file("src")->hashName();
-            Storage::put("public/img", $request->file("src"));
+            Storage::put("storage/img", $request->file("src"));
             $update->save();
         }
 
@@ -153,8 +153,12 @@ class PlayerController extends Controller
      * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Player $player)
+    public function destroy($id)
     {
-        //
+        $player = Player::find($id);
+        $player->delete();
+        Storage::delete("storage/img" . $player->src);
+
+        return redirect()->route("player.index")->with("success","The player has been removed");
     }
 }

@@ -5,7 +5,7 @@
 <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
     <div>
-      <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+      <p class="inline-block px-3 py-px mb-4 font-semibold tracking-wider text-teal-900 uppercase rounded-full text-md bg-teal-accent-400">
         VolleyBall Players
       </p>
       <button class="btn btn-outline btn-primary"><a href="player/create">Register Player</a></button>
@@ -25,76 +25,17 @@
       you have all the players
     </h2>
     <p class="text-base text-gray-700 md:text-lg">
-    </p>
-  </div>
+    </p>  </div>
   <div class="grid gap-10 row-gap-8 mx-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3">
 
     @foreach ($players as $player )
     <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="{{asset('storage/img/' . $player->photos->src)}}" />
+      <a href={{"player/" . $player->id}}> <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="{{asset('storage/img/' . $player->photos->src)}}" /></a>
       <div class="flex flex-col justify-center">
         <p class="text-lg font-bold">{{$player->name}}  {{$player->lastname}} | {{$player->age}} ans</p>
-        <p class="text-sm text-gray-800">Product Manager</p>
+        <p class="text-sm text-gray-800">Poste : {{$player->roles->role}}</p>
       </div>
     </div>
     @endforeach
-    <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
-      <div class="flex flex-col justify-center">
-        <p class="text-lg font-bold">Marta Clermont</p>
-        <p class="text-sm text-gray-800">Design Team Lead</p>
-      </div>
-    </div>
-    <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
-      <div class="flex flex-col justify-center">
-        <p class="text-lg font-bold">Anthony Geek</p>
-        <p class="text-sm text-gray-800">CTO, Lorem Inc.</p>
-      </div>
-    </div>
-    <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="https://images.pexels.com/photos/3747435/pexels-photo-3747435.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
-      <div class="flex flex-col justify-center">
-        <p class="text-lg font-bold">Alice Melbourne</p>
-        <p class="text-sm text-gray-800">Human Resources</p>
-      </div>
-    </div>
-    <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500" alt="Person" />
-      <div class="flex flex-col justify-center">
-        <p class="text-lg font-bold">Martin Garix</p>
-        <p class="text-sm text-gray-800">Bad boy</p>
-      </div>
-    </div>
-    <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="https://images.pexels.com/photos/3931603/pexels-photo-3931603.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
-      <div class="flex flex-col justify-center">
-        <p class="text-lg font-bold">Andrew Larkin</p>
-        <p class="text-sm text-gray-800">Backend Developer</p>
-      </div>
-    </div>
-    <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260" alt="Person" />
-      <div class="flex flex-col justify-center">
-        <p class="text-lg font-bold">Sophie Denmo</p>
-        <p class="text-sm text-gray-800">Designer UI/UX</p>
-      </div>
-    </div>
-    <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="https://images.pexels.com/photos/3931553/pexels-photo-3931553.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
-      <div class="flex flex-col justify-center">
-        <p class="text-lg font-bold">Benedict Caro</p>
-        <p class="text-sm text-gray-800">Frontend Developer</p>
-      </div>
-    </div>
-    <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="https://images.pexels.com/photos/3783255/pexels-photo-3783255.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
-      <div class="flex flex-col justify-center">
-        <p class="text-lg font-bold">Adam Molly</p>
-        <p class="text-sm text-gray-800">Full Stack Developer</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 @endsection

@@ -22,9 +22,9 @@ class CreatePlayersTable extends Migration
             $table->integer("phone");
             $table->string("email");
             $table->string("country");
-            $table->foreignId("photo_id");
-            $table->foreignId("role_id");
-            $table->foreignId("team_id");
+            $table->foreignId("photo_id")->ondelete("cascade");
+            $table->foreignId("role_id")->ondelete("cascade");
+            $table->foreignId("team_id")->ondelete("cascade")->nullable();
 
             $table->timestamps();
         });

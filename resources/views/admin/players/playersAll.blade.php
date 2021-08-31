@@ -25,14 +25,13 @@
       you have all the players
     </h2>
     <p class="text-base text-gray-700 md:text-lg">
-
     </p>
   </div>
   <div class="grid gap-10 row-gap-8 mx-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3">
 
     @foreach ($players as $player )
     <div class="flex">
-      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="{{asset('img/' . $player->photos->src)}}" />
+      <img class="object-cover w-20 h-20 mr-4 rounded-full shadow" src="{{asset('storage/img/' . $player->photos->src)}}" />
       <div class="flex flex-col justify-center">
         <p class="text-lg font-bold">{{$player->name}}  {{$player->lastname}} | {{$player->age}} ans</p>
         <p class="text-sm text-gray-800">Product Manager</p>

@@ -44,16 +44,16 @@ class PlayerController extends Controller
     public function store(Request $request)
     {
         // $request->validate([
-        //     "name" => ["required"],
-        //     "lastname" => ["required"],
-        //     "sex" => ["required"],
-        //     "age" => ["required", "numeric"],
-        //     "phone" => ["required", "numeric"],
-        //     "email" => ["required", "email"],
-        //     "country" => ["required"],
-        //     "photo_id" => ["required"],
-        //     "role_id" => ["required"],
-        //     "team_id" => ["required"],
+        //     'name' => "required",
+        //     'numeric' => "required",
+        //     'sex' => "required",
+        //     'age' => "required", "numeric",
+        //     'phone' => "required", "numeric",
+        //     'email' => "required", "email",
+        //     'country' => "required",
+        //     'photo_id' => "required",
+        //     'role_id' => "required",
+        //     'team_id' => "required",
         // ]);
 
         $photo = new Photo();

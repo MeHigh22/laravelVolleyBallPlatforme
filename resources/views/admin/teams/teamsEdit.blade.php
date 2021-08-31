@@ -101,7 +101,7 @@
         <input
         value="{{$team->maxplayers}}"
           type="number"
-          name="country"
+          name="maxplayers"
           placeholder=" "
           class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
         />

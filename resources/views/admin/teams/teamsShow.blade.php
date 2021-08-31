@@ -3,8 +3,8 @@
 @section("content")
     <section class="bg-white dark:bg-gray-800">
         <div class="container px-6 py-8 mx-auto">
-            <div class="w-full mt-8 lg:w-1/2">
-                <div class="lg:max-w-lg">
+            <div class="w-full mx-auto mt-8">
+                <div class="mx-auto lg:max-w-lg">
                     <h1 class="text-2xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">{{$team->club}}</h1>
                     <p class="mt-2 text-gray-600 dark:text-gray-300">Details Club : </p>
                     <div class="grid gap-6 mt-8 sm:grid-cols-2">
@@ -35,12 +35,12 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full mt-8 lg:w-1/2">
-                <div class="lg:max-w-lg">
-                    <h1 class="text-2xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">List of players</h1>
+            <div class="w-full mx-auto mt-8 lg:w-1/2">
+                <div class="mx-auto lg:max-w-lg">
+                    <h1 class="mx-auto text-2xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">List of players</h1>
                     @foreach ($players as $player )
                     @if ($player->team_id == $team->id)
-                    <div class="overflow-hidden bg-white rounded-lg shadow-lg  dark:bg-gray-800">
+                    <div class="overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
                     <div class="py-5 text-center">
                     <a href={{"/player/" . $player->id}} class="block text-2xl font-bold text-gray-800 dark:text-white">{{$player->name}} {{$player->lastname}}</a>
                     <span class="text-sm text-gray-700 dark:text-gray-200">Role : {{$player->roles->role}}</span>

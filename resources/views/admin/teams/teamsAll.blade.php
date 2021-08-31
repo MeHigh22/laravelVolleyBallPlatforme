@@ -6,7 +6,7 @@
     <button class="btn btn-outline btn-primary"><a href="team/create">Register a team</a></button>
   <div class="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
     @foreach ($teams as $team)
-    <div class="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
+    <div class="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-blue-800 rounded shadow-xl group hover:shadow-2xl">
         <a href={{"team/" . $team->id}}>
             <div class="p-5">
             <div class="flex items-center justify-center w-10 h-10 mb-4 rounded-full bg-indigo-50">

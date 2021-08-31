@@ -2,8 +2,8 @@
   <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
     <div class="relative flex grid items-center grid-cols-2 lg:grid-cols-3">
       <ul class="flex items-center hidden space-x-8 lg:flex">
+          <li><a href="/" aria-label="Our product" title="Our product" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Back to Homepage</a></li>
         <li><a href={{route("player.index")}} aria-label="Our product" title="Our product" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Players Index + Modify</a></li>
-
       </ul>
       <a href="/adminHome" aria-label="Company" title="Company" class="inline-flex items-center lg:mx-auto">
         <svg class="w-8 text-teal-accent-400" viewBox="0 0 24 24" stroke-linejoin="round" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" stroke="currentColor" fill="none">

@@ -9,7 +9,13 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
     public function welcome() {
-        return view("welcome");
+        $players = Player::all();
+        $teams = Team::all();
+        $outEurope = $teams->where("continent", "=", 1);
+        $inEurope = $teams->where("continent", "!=", 1);
+        return view("welcome", compact("players", "teams"));
+
+
     }
 
     //Afficher tout les joueurs
@@ -30,5 +36,6 @@ class FrontController extends Controller
     {
         return view('admin.adminWelcome');
     }
+
 
 }

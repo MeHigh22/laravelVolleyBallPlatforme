@@ -108,7 +108,7 @@ class PlayerController extends Controller
      * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Player $player)
+    public function update(Request $request, Player $player)
     {
         // $request->validate([
         //     'name' => ["required"],
@@ -123,7 +123,6 @@ class PlayerController extends Controller
         //     'team_id' => ["required"],
         // ]);
 
-
         $player->name = $request->name;
         $player->lastname = $request->lastname;
         $player->sex = $request->sex;
@@ -135,11 +134,11 @@ class PlayerController extends Controller
         $player->role_id = $request->role_id;
         $player->team_id = $request->team_id;
 
-        $update = Photo::find($id);
+        $update = Photo::find($player->id);
         if($request->file("src") !== null){
-            Storage::delete("storage/img" . $update->src);
+            Storage::delete("public/img" . $update->src);
             $update->src = $request->file("src")->hashName();
-            Storage::put("storage/img", $request->file("src"));
+            Storage::put("public/img", $request->file("src"));
             $update->save();
         }
 
@@ -157,7 +156,7 @@ class PlayerController extends Controller
     {
         $player = Player::find($id);
         $player->delete();
-        Storage::delete("storage/img" . $player->src);
+        Storage::delete("public/img" . $player->src);
 
         return redirect()->route("player.index")->with("success","The player has been removed");
     }

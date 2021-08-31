@@ -15,7 +15,7 @@
         <span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">Admin Volley</span>
       </a>
       <ul class="flex items-center hidden ml-auto space-x-8 lg:flex">
-        <li><a href="team" aria-label="Sign in" title="Sign in" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Teams Index + Modify</a></li>
+        <li><a href={{route("team.index")}} aria-label="Sign in" title="Sign in" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Teams Index + Modify</a></li>
         <li>
         </li>
       </ul>

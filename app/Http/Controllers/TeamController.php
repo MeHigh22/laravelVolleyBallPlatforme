@@ -115,8 +115,9 @@ class TeamController extends Controller
      * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Team $team)
+    public function destroy($id)
     {
+        $team = Team::find($id);
         $team->delete();
         return redirect()->route("team.index")->with("warning","The team has been deleted successfully.");
     }

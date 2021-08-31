@@ -11,9 +11,30 @@ class FrontController extends Controller
     public function welcome() {
         $players = Player::all();
         $teams = Team::all();
+
         $outEurope = $teams->where("continent", "=", 1);
         $inEurope = $teams->where("continent", "!=", 1);
-        return view("welcome", compact("players", "teams"));
+
+        $womanPlayer = $players->where("sex", "=", "Femme");
+        $womanRandom = $womanPlayer->where("team_id", "!=", null);
+        $manPlayer = $players->where("sex", "=", "Homme");
+        $manRandom = $manPlayer->where("team_id", "!=", null);
+
+        $noTeam = $players->where('team_id', '==', null);
+        if (count($noTeam) > 4) {
+            $noTeamRandom = $noTeam->random(4);
+        } else {
+            $noTeamRandom = $noTeam;
+        }
+
+        $withTeam = $players->where('team_id', '!=', null);
+        if (count($withTeam) > 4) {
+            $withTeamRandom = $withTeam->random(4);
+        } else {
+            $withTeamRandom = $withTeam;
+        }
+
+        return view("welcome", compact("players", "teams", "outEurope", "inEurope", "manPlayer", "womanPlayer", "withTeamRandom", "noTeamRandom"));
 
 
     }

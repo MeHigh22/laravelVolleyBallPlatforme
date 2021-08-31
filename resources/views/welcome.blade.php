@@ -32,8 +32,14 @@
         </div>
     </div>
 </div>
-  </div>
-</div>
+
+<section>
+                <h3>4 Random Players (No Team)</h3>
+                @foreach ($noTeamRandom as $player)
+                        <span>{{ $player->name }} {{$player->lastname}}</span>
+                @endforeach
+            </section>
+<section>4 Random Players</section>
 
 
 @endsection

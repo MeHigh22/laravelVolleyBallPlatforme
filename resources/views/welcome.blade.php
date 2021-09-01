@@ -37,8 +37,11 @@
         </div>
     </div>
 
-    <section class="border col-6 jumbotron">
-            <h3>Teams with minimum one player</h3>
+    <div>
+
+    </div>
+    <section>
+            <h1>Teams with minimum one player</h1>
             @foreach ($teams as $team)
                 @if (count($team->players))
                     {{ $team->club }} |
@@ -47,7 +50,7 @@
         </section>
 
     <section>
-            <h3>2 Empty Teams</h3>
+            <h1>2 Empty Teams</h1>
             @foreach ($teams as $team)
                 @if (count($team->players) == 0)
                     {{ $team->club }} |
@@ -56,19 +59,19 @@
         </section>
 
     <section>
-        <h3>4 Random Players (No Team)</h3>
+        <h1>4 Random Players (No Team)</h1>
         @foreach ($noTeamRandom as $player)
             <span>{{ $player->name }} {{ $player->lastname }}</span> |
         @endforeach
     </section>
     <section>
-        <h3>4 Random Players</h3>
+        <h1>4 Random Players</h1>
         @foreach ($withTeamRandom as $player)
             <span>{{ $player->name }} {{ $player->lastname }}</span> |
         @endforeach
     </section>
     <section>
-        <h3>2 Teams (Not Full) </h3>
+        <h1>2 Teams (Not Full) </h1>
         @foreach ($teams as $team)
             @if (count($team->players) && $loop->iteration <= 2)
                 {{ $team->club }} |
@@ -77,21 +80,21 @@
     </section>
 
     <section >
-        <h3>Teams in Europe</h3>
+        <h1>Teams in Europe</h1>
         @foreach ($inEurope as $team)
             <span>{{ $team->club }}</span> |
         @endforeach
     </section>
 
     <section >
-        <h3>Teams Outside of Europe</h3>
+        <h1>Teams Outside of Europe</h1>
         @foreach ($outEurope as $team)
             <span>{{ $team->club }}</span>  |
         @endforeach
     </section>
 
     <section>
-        <h3>5 Random Female Players</h3>
+        <h1>5 Random Female Players</h1>
         @forelse ($womanPlayer as $player)
             <span>{{ $player->prenom }}</span>
         @empty
@@ -100,7 +103,7 @@
     </section>
 
     <section>
-        <h3>5 Random Male Players</h3>
+        <h1>5 Random Male Players</h1>
         @foreach ($manPlayer as $player)
             <span>{{ $player->name }}</span> |
         @endforeach

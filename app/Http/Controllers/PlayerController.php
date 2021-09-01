@@ -86,7 +86,8 @@ class PlayerController extends Controller
      */
     public function show(Player $player)
     {
-        return view("admin.players.playersShow", compact("player"));
+        $teams = Team::all();
+        return view("admin.players.playersShow", compact("player", "teams"));
     }
 
     /**

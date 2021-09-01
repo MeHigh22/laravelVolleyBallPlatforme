@@ -44,9 +44,12 @@
                         <div class="items-center block text-gray-800 dark:text-gray-200">
 
                             <h2 class="text-2xl font-medium tracking">Team & Role</h2>
-                            <h2>{{$player->teams ? $player->teams->club : "Free Player"}} | {{$player->roles->role}}</h2>
-                        </div>
+                            @foreach ($teams as $team )
+                            <h2><a href={{"/team/" . $team->id}}>{{$player->teams ? $player->teams->club : "Free Player"}} | {{$player->roles->role}} </a> </h2>
+                            @endforeach
 
+
+                        </div>
                         <form action={{route("player.destroy", $player->id)}} method="POST" class="items-center block text-gray-800 dark:text-gray-200">
                             @csrf
                             @method("DELETE")

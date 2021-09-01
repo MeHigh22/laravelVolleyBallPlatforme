@@ -22,7 +22,7 @@
                         </div>
                         <div class="items-center block text-gray-800 dark:text-gray-200">
                             <h2 class="text-2xl font-medium tracking">Continent</h2>
-                            <h2>{{$team->continents->continent}}</h2>
+                            <h2> {{$team->continents->continent}}</h2>
                         </div>
                         <form action={{route("team.destroy", $team->id)}} method="POST" class="items-center block text-gray-800 dark:text-gray-200">
                             @csrf

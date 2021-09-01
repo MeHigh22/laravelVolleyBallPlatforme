@@ -70,8 +70,9 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
+        $continents = Continent::all();
         $players = Player::all();
-        return view("admin.teams.teamsShow", compact("team", "players"));
+        return view("admin.teams.teamsShow", compact("team", "players", "continents"));
     }
 
     /**

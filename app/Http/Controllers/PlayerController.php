@@ -44,7 +44,7 @@ class PlayerController extends Controller
     public function store(Request $request)
     {
         // $request->validate([
-        //     'name' => "required",
+        //     'club' => "required",
         //     'numeric' => "required",
         //     'sex' => "required",
         //     'age' => "required", "numeric",
@@ -56,13 +56,61 @@ class PlayerController extends Controller
         //     'team_id' => "required",
         // ]);
 
+            $team = Team::find($request->team_id);
+
+            if($request->team_id == null) {
+                $photo = new Photo();
+                $photo->src = $request->file("src")->hashName();
+                Storage::put("public/img", $request->file("src"));
+                $photo->save();
+
+                $store = new Player();
+                $store->club = $request->club;
+                $store->lastname = $request->lastname;
+                $store->sex = $request->sex;
+                $store->age = $request->age;
+                $store->phone = $request->phone;
+                $store->email = $request->email;
+                $store->country = $request->country;
+                $store->photo_id = $photo->id;
+                $store->role_id = $request->role_id;
+                $store->team_id = $request->team_id;
+                $store->save();
+
+                return redirect("player")->with("success", "A Player has been added");
+
+            } else {
+            /* --------- On ne vérifie les postes que si le joueur a une équipe --------- */
+
+            $avant = Player::all()->where("role_id", 1)->where("team_id", $team->id);
+            $central = Player::all()->where("role_id", 2)->where("team_id", $team->id);
+            $arriere = Player::all()->where("role_id", 3)->where("team_id", $team->id);
+
+
+            switch ($request->role_id) {
+                case 1:
+                    if ($avant->count() === 2) {
+                        return redirect()->back()->with("statut", "The team {$team->club} already has 2 players for this role");
+                    }
+                    break;
+                case 2:
+                    if ($central->count() === 2) {
+                        return redirect()->back()->with("statut", "The team {$team->club} already has 2 players for this role");
+                    }
+                    break;
+                case 3:
+                    if ($arriere->count() === 2) {
+                        return redirect()->back()->with("statut", "The team{$team->club} already has 2 players for this role");
+                    }
+                    break;
+            }
             $photo = new Photo();
             $photo->src = $request->file("src")->hashName();
             Storage::put("public/img", $request->file("src"));
             $photo->save();
 
             $store = new Player();
-            $store->name = $request->name;
+            $store->club = $request->club;
             $store->lastname = $request->lastname;
             $store->sex = $request->sex;
             $store->age = $request->age;
@@ -73,8 +121,8 @@ class PlayerController extends Controller
             $store->role_id = $request->role_id;
             $store->team_id = $request->team_id;
             $store->save();
-
-            return redirect("player")->with("success", "Un joueur a bien été crée");
+            return redirect("player")->with("success", "A Player has been added");
+            }
 
     }
 
@@ -113,7 +161,7 @@ class PlayerController extends Controller
     public function update(Request $request, Player $player)
     {
         // $request->validate([
-        //     'name' => ["required"],
+        //     'club' => ["required"],
         //     'lastname' => ["required"],
         //     'sex' => ["required"],
         //     'age' => ["required", "numeric"],
@@ -125,7 +173,7 @@ class PlayerController extends Controller
         //     'team_id' => ["required"],
         // ]);
 
-            $player->name = $request->name;
+            $player->club = $request->club;
             $player->lastname = $request->lastname;
             $player->sex = $request->sex;
             $player->age = $request->age;

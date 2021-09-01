@@ -25,3 +25,11 @@
         </ul>
     </div>
 @endif
+
+{{--STATUT --}}
+
+@if ($message = Session::get('statut'))
+    <div class="alert alert-warning alert-block">
+        <strong>{{$message}}</strong>
+    </div>
+@endif

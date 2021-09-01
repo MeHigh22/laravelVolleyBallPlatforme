@@ -46,9 +46,6 @@ class PhotoSeeder extends Seeder
             [
                 'src' => 'volleyballl.png',
             ],
-            [
-                'src' => 'volleyballl.png',
-            ],
         ]);
 
     }

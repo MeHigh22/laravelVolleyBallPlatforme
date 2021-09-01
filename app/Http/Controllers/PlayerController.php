@@ -104,8 +104,8 @@ class PlayerController extends Controller
                     break;
             }
             $photo = new Photo();
-            $photo->src = $request->file("src")->hashName();
             Storage::put("public/img", $request->file("src"));
+            $photo->src = $request->file("src")->hashName();
             $photo->save();
 
             $store = new Player();
@@ -203,7 +203,7 @@ class PlayerController extends Controller
                 }
 
 
-            $photo->src = $request->file("src")->hashName();
+            $players->photos->src = $request->file("src")->hashName();
             Storage::put("public/img", $request->file("src"));
 
 
@@ -249,7 +249,7 @@ class PlayerController extends Controller
                         break;
                 }
 
-                $photo->src = $request->file("src")->hashName();
+                $players->photos->src = $request->file("src")->hashName();
                 Storage::put("public/img", $request->file("src"));
 
                 $players->name = $request->name;
@@ -270,7 +270,7 @@ class PlayerController extends Controller
                 return redirect("/player")->with("success", "Player has been modified successfully");
             }
 
-            $photo->src = $request->file("src")->hashName();
+            $players->photos->src = $request->file("src")->hashName();
             Storage::put("public/img", $request->file("src"));
 
             $players->name = $request->name;

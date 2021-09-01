@@ -65,7 +65,7 @@ class PlayerController extends Controller
                 $photo->save();
 
                 $store = new Player();
-                $store->club = $request->club;
+                $store->name = $request->name;
                 $store->lastname = $request->lastname;
                 $store->sex = $request->sex;
                 $store->age = $request->age;
@@ -80,7 +80,6 @@ class PlayerController extends Controller
                 return redirect("player")->with("success", "A Player has been added");
 
             } else {
-            /* --------- On ne vérifie les postes que si le joueur a une équipe --------- */
 
             $avant = Player::all()->where("role_id", 1)->where("team_id", $team->id);
             $central = Player::all()->where("role_id", 2)->where("team_id", $team->id);
@@ -90,17 +89,17 @@ class PlayerController extends Controller
             switch ($request->role_id) {
                 case 1:
                     if ($avant->count() === 2) {
-                        return redirect()->back()->with("statut", "The team {$team->club} already has 2 players for this role");
+                        return redirect()->back()->with("statut", "The team {$team->club} has 2 players for this role");
                     }
                     break;
                 case 2:
                     if ($central->count() === 2) {
-                        return redirect()->back()->with("statut", "The team {$team->club} already has 2 players for this role");
+                        return redirect()->back()->with("statut", "The team {$team->club} has 2 players for this role");
                     }
                     break;
                 case 3:
                     if ($arriere->count() === 2) {
-                        return redirect()->back()->with("statut", "The team{$team->club} already has 2 players for this role");
+                        return redirect()->back()->with("statut", "The team{$team->club} has 2 players for this role");
                     }
                     break;
             }
@@ -125,6 +124,8 @@ class PlayerController extends Controller
             }
 
     }
+
+
 
     /**
      * Display the specified resource.
@@ -173,27 +174,120 @@ class PlayerController extends Controller
         //     'team_id' => ["required"],
         // ]);
 
-            $player->club = $request->club;
-            $player->lastname = $request->lastname;
-            $player->sex = $request->sex;
-            $player->age = $request->age;
-            $player->phone = $request->phone;
-            $player->email = $request->email;
-            $player->country = $request->country;
-            $player->photo_id = $request->photo_id;
-            $player->role_id = $request->role_id;
-            $player->team_id = $request->team_id;
+        $team = Team::find($request->team_id);
+        $players = Player::find($player->id);
+            if($team->id != null) {
+                if (($team->id) != $player->team_id || ($request->role_id) != $player->role_id) {
+                    $avant   =Player::all()->where('role_id', 1)->where('team_id', $team->id);
+                    $central =Player::all()->where("role_id", 2)->where("team_id", $team->id);
+                    $arriere =Player::all()->where("role_id", 3)->where("team_id", $team->id);
 
-            $update = Photo::find($player->id);
-            if($request->file("src") !== null){
-                Storage::delete("public/img" . $update->src);
-                $update->src = $request->file("src")->hashName();
+                    switch($request->role_id) {
+                    case 1:
+                        if ($avant->count() === 2) {
+                            return back()->with("statut", "The team {$team->club} has reached their maximum players for this role");
+                        }
+                        break;
+                    case 2:
+                        if ($central->count() === 2) {
+                            return back()->with("statut", "The team {$team->club} has reached their maximum players for this role");
+                        }
+                        break;
+                    case 3:
+                        if ($arriere->count() === 2) {
+                            return back()->with("statut", "The team {$team->club} has reached their maximum players for this role");
+                        }
+                        break;
+                    }
+                }
+
+            Storage::put("public/img", $request->file("src"));
+            $player->photos->src = $request->file("src")->hashName();
+
+
+            $players->name = $request->name;
+            $players->lastname = $request->lastname;
+            $players->sex = $request->sex;
+            $players->age = $request->age;
+            $players->phone = $request->phone;
+            $players->email = $request->email;
+            $players->country = $request->country;
+            $players->photo_id = $request->photo_id;
+            $players->role_id = $request->role_id;
+            if ($request->team_id == null) {
+            } else {
+                $players->team_id = $request->team_id;
+            }
+            $players->team_id = $request->team_id;
+            $player->push();
+
+            return redirect("player");
+
+            } else {
+            if (($team->id == $player->team_id) || ($request->role_id != $player->role_id)) {
+                $avant = Player::all()->where("role_id", 1)->where("team_id", $team->id);
+                $central = Player::all()->where("role_id", 2)->where("team_id", $team->id);
+                $arriere = Player::all()->where("role_id", 3)->where("team_id", $team->id);
+
+                switch ($request->role_id) {
+                    case 1:
+                        if ($avant->count() === 2) {
+                            return back()->with("statut", " The team {$team->club} already has the maximum of players needed");
+                        }
+                        break;
+                    case 2:
+                        if ($central->count() === 2) {
+                            return back()->with("statut", " The team{$team->club} already has the maximum of players needed");
+                        }
+                        break;
+                    case 3:
+                        if ($arriere->count() === 2) {
+                            return back()->with("statut", " The team {$team->club} already has the maximum of players needed");
+                        }
+                        break;
+                }
+
                 Storage::put("public/img", $request->file("src"));
-                $update->save();
+                $player->photos->src = $request->file("src")->hashName();
+
+                $players->name = $request->name;
+                $players->lastname = $request->lastname;
+                $players->sex = $request->sex;
+                $players->age = $request->age;
+                $players->phone = $request->phone;
+                $players->email = $request->email;
+                $players->country = $request->country;
+                // $players->photo_id = $request->photo_id;
+                $players->role_id = $request->role_id;
+                if ($request->team_id == null) {
+                } else {
+                    $players->team_id = $request->team_id;
+                }
+                $players->team_id = $request->team_id;
+                $player->push();
+                return redirect("/player")->with("success", "Player has been modified successfully");
             }
 
-            return redirect("player")->with("message", "The Player has been modified");
+            Storage::put("public/img", $request->file("src"));
+            $player->photos->src = $request->file("src")->hashName();
 
+            $players->name = $request->name;
+            $players->lastname = $request->lastname;
+            $players->sex = $request->sex;
+            $players->age = $request->age;
+            $players->phone = $request->phone;
+            $players->email = $request->email;
+            $players->country = $request->country;
+            // $players->photo_id = $request->photo_id;
+            $players->role_id = $request->role_id;
+            if ($request->team_id == null) {
+            } else {
+                $players->team_id = $request->team_id;
+            }
+            $players->team_id = $request->team_id;
+            $player->push();
+            return redirect("/player")->with("success", "Player has been modified successfully");
+            }
         }
 
     /**

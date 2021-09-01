@@ -137,11 +137,11 @@
       <div class="relative z-0 w-full mb-5">
         <input
           type="file"
-          name="src"
+          name="photo_id"
           placeholder=" "
           class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
         />
-        <label for="src" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Photo</label>
+        <label for="photo_id" class="absolute text-gray-500 duration-300 top-3 -z-1 origin-0">Photo</label>
         <span class="hidden text-sm text-red-600" id="error">Photo is required</span>
       </div>
 

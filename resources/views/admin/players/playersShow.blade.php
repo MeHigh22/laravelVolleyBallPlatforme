@@ -45,7 +45,9 @@
 
                             <h2 class="text-2xl font-medium tracking">Team & Role</h2>
                             @foreach ($teams as $team )
+                            @if($loop->first)
                             <h2><a href={{"/team/" . $team->id}}>{{$player->teams ? $player->teams->club : "Free Player"}} | {{$player->roles->role}} </a> </h2>
+                            @endif
                             @endforeach
 
 

@@ -29,7 +29,7 @@ class FrontController extends Controller
 
         $withTeam = $players->where('team_id', '!=', null);
         if (count($withTeam) > 4) {
-            $withTeamRandom = $withTeam->random(4);
+            $withTeamRandom = $withTeam;
         } else {
             $withTeamRandom = $withTeam;
         }

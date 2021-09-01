@@ -15,7 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ContinentSeeder::class,
-            RoleSeeder::class
+            RoleSeeder::class,
+            PhotoSeeder::class,
+            PlayerSeeder::class,
+            TeamSeeder::class,
         ]);
     }
 }

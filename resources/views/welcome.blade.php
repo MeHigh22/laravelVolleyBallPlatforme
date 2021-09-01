@@ -80,7 +80,7 @@
         <div class="container px-6 py-8 mx-auto">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <div>
-                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">4 Random Players</h1>
+                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">4 Players</h1>
                     <p class="mt-2 text-gray-500 dark:text-gray-400">
         @foreach ($withTeamRandom as $player)
             <span>{{ $player->name }} {{ $player->lastname }}</span> |

@@ -20,6 +20,10 @@ class CreateTeamsTable extends Migration
             $table->string("country");
             $table->foreignId("continent_id");
             $table->integer("maxplayers");
+            $table->integer("AVN");
+            $table->integer("CTR");
+            $table->integer("ARR");
+            $table->integer("RMP");
             $table->timestamps();
         });
     }

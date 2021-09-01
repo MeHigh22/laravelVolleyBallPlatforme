@@ -56,25 +56,26 @@ class PlayerController extends Controller
         //     'team_id' => "required",
         // ]);
 
-        $photo = new Photo();
-        $photo->src = $request->file("src")->hashName();
-        Storage::put("public/img", $request->file("src"));
-        $photo->save();
+            $photo = new Photo();
+            $photo->src = $request->file("src")->hashName();
+            Storage::put("public/img", $request->file("src"));
+            $photo->save();
 
-        $store = new Player();
-        $store->name = $request->name;
-        $store->lastname = $request->lastname;
-        $store->sex = $request->sex;
-        $store->age = $request->age;
-        $store->phone = $request->phone;
-        $store->email = $request->email;
-        $store->country = $request->country;
-        $store->photo_id = $photo->id;
-        $store->role_id = $request->role_id;
-        $store->team_id = $request->team_id;
-        $store->save();
+            $store = new Player();
+            $store->name = $request->name;
+            $store->lastname = $request->lastname;
+            $store->sex = $request->sex;
+            $store->age = $request->age;
+            $store->phone = $request->phone;
+            $store->email = $request->email;
+            $store->country = $request->country;
+            $store->photo_id = $photo->id;
+            $store->role_id = $request->role_id;
+            $store->team_id = $request->team_id;
+            $store->save();
 
-        return redirect("player")->with("success", "Un joueur a bien été crée");
+            return redirect("player")->with("success", "Un joueur a bien été crée");
+
     }
 
     /**
@@ -123,28 +124,28 @@ class PlayerController extends Controller
         //     'team_id' => ["required"],
         // ]);
 
-        $player->name = $request->name;
-        $player->lastname = $request->lastname;
-        $player->sex = $request->sex;
-        $player->age = $request->age;
-        $player->phone = $request->phone;
-        $player->email = $request->email;
-        $player->country = $request->country;
-        $player->photo_id = $request->photo_id;
-        $player->role_id = $request->role_id;
-        $player->team_id = $request->team_id;
+            $player->name = $request->name;
+            $player->lastname = $request->lastname;
+            $player->sex = $request->sex;
+            $player->age = $request->age;
+            $player->phone = $request->phone;
+            $player->email = $request->email;
+            $player->country = $request->country;
+            $player->photo_id = $request->photo_id;
+            $player->role_id = $request->role_id;
+            $player->team_id = $request->team_id;
 
-        $update = Photo::find($player->id);
-        if($request->file("src") !== null){
-            Storage::delete("public/img" . $update->src);
-            $update->src = $request->file("src")->hashName();
-            Storage::put("public/img", $request->file("src"));
-            $update->save();
+            $update = Photo::find($player->id);
+            if($request->file("src") !== null){
+                Storage::delete("public/img" . $update->src);
+                $update->src = $request->file("src")->hashName();
+                Storage::put("public/img", $request->file("src"));
+                $update->save();
+            }
+
+            return redirect("player")->with("message", "The Player has been modified");
+
         }
-
-        return redirect("player")->with("message", "The Player has been modified");
-
-    }
 
     /**
      * Remove the specified resource from storage.

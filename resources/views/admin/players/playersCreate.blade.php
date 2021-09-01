@@ -160,7 +160,7 @@
           onclick="this.setAttribute('value', this.value);"
           class="block w-full px-0 pt-3 pb-2 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black"
         >
-          <option value="" selected disabled hidden></option>
+          <option value="">No Team</option>
           @foreach ($teams as $team)
         <option value="{{ $team->id}}">{{ $team->club }}</option>
           @endforeach

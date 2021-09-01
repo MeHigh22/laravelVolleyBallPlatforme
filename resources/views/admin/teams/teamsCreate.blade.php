@@ -106,6 +106,50 @@
         <span class="hidden text-sm text-red-600" id="error">Amount is required</span>
       </div>
 
+      <div class="relative z-0 w-full mb-5">
+        <input
+          type="number"
+          name="AVN"
+          placeholder=""
+          class="block w-full px-0 pt-3 pb-2 pl-5 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
+        />
+        <label for="money" class="absolute text-gray-500 duration-300 top-3 origin-0">Avant</label>
+        <span class="hidden text-sm text-red-600" id="error">Avant is required</span>
+      </div>
+
+      <div class="relative z-0 w-full mb-5">
+        <input
+          type="number"
+          name="CTR"
+          placeholder=""
+          class="block w-full px-0 pt-3 pb-2 pl-5 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
+        />
+        <label for="money" class="absolute text-gray-500 duration-300 top-3 origin-0">CTR</label>
+        <span class="hidden text-sm text-red-600" id="error">Amount is required</span>
+      </div>
+
+      <div class="relative z-0 w-full mb-5">
+        <input
+          type="number"
+          name="ARR"
+          placeholder=""
+          class="block w-full px-0 pt-3 pb-2 pl-5 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
+        />
+        <label for="money" class="absolute text-gray-500 duration-300 top-3 origin-0">ARR</label>
+        <span class="hidden text-sm text-red-600" id="error">Amount is required</span>
+      </div>
+
+      <div class="relative z-0 w-full mb-5">
+        <input
+          type="number"
+          name="RMP"
+          placeholder=""
+          class="block w-full px-0 pt-3 pb-2 pl-5 mt-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"
+        />
+        <label for="money" class="absolute text-gray-500 duration-300 top-3 origin-0">RMP</label>
+        <span class="hidden text-sm text-red-600" id="error">Amount is required</span>
+      </div>
+
       <button
         id="button"
         type="submit"

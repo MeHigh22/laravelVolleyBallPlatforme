@@ -53,6 +53,10 @@ class TeamController extends Controller
         $store->country = $request->country;
         $store->continent_id = $request->continent_id;
         $store->maxplayers = $request->maxplayers;
+        $store->AVN = $request->AVN;
+        $store->CTR = $request->CTR;
+        $store->ARR = $request->ARR;
+        $store->RMP = $request->RMP;
         $store->save();
         return redirect()->route("team.index")->with("success", "A team has been created !");
 
@@ -104,6 +108,10 @@ class TeamController extends Controller
         $team->country = $request->country;
         $team->continent_id = $request->continent_id;
         $team->maxplayers = $request->maxplayers;
+        $team->AVN = $request->AVN;
+        $team->CTR = $request->CTR;
+        $team->ARR = $request->ARR;
+        $team->RMP = $request->RMP;
         $team->save();
         return redirect()->route("team.index")->with("success","The team has been updated successfully.");
     }

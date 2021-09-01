@@ -18,8 +18,41 @@
             <p class="text-sm leading-5 text-gray-900">
              City :  {{$team->city}}
             </p>
-            <p class="text-sm leading-5 text-gray-900">
-             Max Players : {{$team->maxplayers}}
+            <p class>
+             Max Players : {{count($team->players)}} / {{$team->maxplayers}}
+            </p>
+            @php
+                $avn=0;
+                $ctr=0;
+                $arr=0;
+                $rmp=0;
+
+                foreach($team->players as $player){
+                    if($player->role_id === 1){
+                        $avn++;
+
+                    }elseif($player->role_id === 2){
+                        $ctr++;
+                    }
+                    elseif($player->role_id === 3){
+                        $arr++;
+                    }
+                    elseif($player->role_id === 4){
+                        $rmp++;
+                    }
+                }
+            @endphp
+            <p>
+                Front : {{$avn}} / {{$team->AVN}}
+            </p>
+            <p>
+                Central :{{$ctr}} / {{$team->CTR}}
+            </p>
+            <p>
+                Back : {{$arr}} / {{$team->ARR}}
+            </p>
+            <p>
+                Subs :{{$rmp}} / {{$team->RMP}}
             </p>
           </div>
         </a>

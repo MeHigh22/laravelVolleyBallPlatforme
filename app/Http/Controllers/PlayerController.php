@@ -109,7 +109,7 @@ class PlayerController extends Controller
             $photo->save();
 
             $store = new Player();
-            $store->club = $request->club;
+            $store->name = $request->name;
             $store->lastname = $request->lastname;
             $store->sex = $request->sex;
             $store->age = $request->age;

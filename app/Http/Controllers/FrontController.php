@@ -12,8 +12,8 @@ class FrontController extends Controller
         $players = Player::all();
         $teams = Team::all();
 
-        $outEurope = $teams->where("continent", "!=", 1);
-        $inEurope = $teams->where("continent", "=", 1);
+        $outEurope = $teams->where("continent_id", "!==", 1);
+        $inEurope = $teams->where("continent_id", "==", 1);
 
         $womanPlayer = $players->where("sex", "=", "Femme");
         $womanRandom = $womanPlayer->where("team_id", "!=", null);

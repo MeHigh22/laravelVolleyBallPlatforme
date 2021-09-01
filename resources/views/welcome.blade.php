@@ -99,8 +99,8 @@
                 <div>
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Teams Outside of Europe</h1>
                     <p class="mt-2 text-gray-500 dark:text-gray-400">
-                        @foreach ($noTeamRandom as $player)
-                            <span>{{ $player->name }} {{ $player->lastname }}</span> |
+                        @foreach ($outEurope as $team)
+                            <span>{{ $team->club}}</span> |
                         @endforeach
                     </p>
                 </div>

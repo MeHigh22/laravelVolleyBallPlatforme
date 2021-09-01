@@ -20,7 +20,7 @@ class FrontController extends Controller
         $manPlayer = $players->where("sex", "=", "Homme")->random(5);
         $manRandom = $manPlayer->where("team_id", "!=", null);
 
-        $noTeam = $players->where('team_id', '==', null);
+        $noTeam = $players->where('team_id', '=', null);
         if (count($noTeam) > 4) {
             $noTeamRandom = $noTeam->random(4);
         } else {
@@ -29,7 +29,7 @@ class FrontController extends Controller
 
         $withTeam = $players->where('team_id', '!=', null);
         if (count($withTeam) > 4) {
-            $withTeamRandom = $withTeam;
+            $withTeamRandom = $withTeam->random(4);
         } else {
             $withTeamRandom = $withTeam;
         }

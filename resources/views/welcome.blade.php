@@ -115,7 +115,7 @@
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">5 Random Female Players</h1>
                     <p class="mt-2 text-gray-500 dark:text-gray-400">
         @forelse ($womanPlayer as $player)
-            <span>{{ $player->prenom }}</span>
+            <span>{{ $player->name }}</span>
         @empty
             <span>No Woman Player</span>
         @endforelse

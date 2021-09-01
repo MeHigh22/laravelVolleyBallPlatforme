@@ -45,7 +45,7 @@
 
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Teams (Min 1 Player)</h1>
 
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                    <p class="p-6 mt-2 bg-indigo-400 border-4 border-indigo-300 border-dashed text-white-500 dark:text-gray-400 bg-clip-border">
                         @foreach ($teams as $team)
                             @if (count($team->players))
                                 {{ $team->club }} |
@@ -56,7 +56,7 @@
 
                 <div>
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">2 Empty Teams</h1>
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                    <p class="p-6 mt-2 bg-indigo-400 border-4 border-indigo-300 border-dashed text-white-500 dark:text-gray-400 bg-clip-border">
                         @foreach ($teams as $team)
                             @if (count($team->players) == 0)
                                 {{ $team->club }} |
@@ -66,7 +66,7 @@
                 </div>
                 <div>
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">4 Random Players(No Team)</h1>
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                    <p class="p-6 mt-2 bg-indigo-400 border-4 border-indigo-300 border-dashed text-white-500 dark:text-gray-400 bg-clip-border">
                         @foreach ($noTeamRandom as $player)
                             <span>{{ $player->name }} {{ $player->lastname }}</span> |
                         @endforeach
@@ -81,7 +81,7 @@
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <div>
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">4 Players</h1>
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                    <p class="p-6 mt-2 bg-indigo-400 border-4 border-indigo-300 border-dashed text-white-500 dark:text-gray-400 bg-clip-border">
         @foreach ($withTeamRandom as $player)
             <span>{{ $player->name }} {{ $player->lastname }}</span> |
         @endforeach
@@ -90,7 +90,7 @@
 
                 <div>
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Teams in Europe</h1>
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                    <p class="p-6 mt-2 bg-indigo-400 border-4 border-indigo-300 border-dashed text-white-500 dark:text-gray-400 bg-clip-border">
         @foreach ($inEurope as $team)
             <span>{{ $team->club }}</span> |
         @endforeach
@@ -98,7 +98,7 @@
                 </div>
                 <div>
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Teams Outside of Europe</h1>
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                    <p class="p-6 mt-2 bg-indigo-400 border-4 border-indigo-300 border-dashed text-white-500 dark:text-gray-400 bg-clip-border">
                         @foreach ($outEurope as $team)
                             <span>{{ $team->club}}</span> |
                         @endforeach
@@ -113,7 +113,7 @@
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <div>
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">5 Random Female Players</h1>
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                    <p class="p-6 mt-2 bg-indigo-400 border-4 border-indigo-300 border-dashed text-white-500 dark:text-gray-400 bg-clip-border">
         @forelse ($womanPlayer as $player)
             <span>{{ $player->name }}</span>
         @empty
@@ -124,7 +124,7 @@
 
                 <div>
                     <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">5 Random Male Players</h1>
-                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                    <p class="p-6 mt-2 bg-indigo-400 border-4 border-indigo-300 border-dashed text-white-500 dark:text-gray-400 bg-clip-border">
         @foreach ($manPlayer as $player)
             <span>{{ $player->name }}</span> |
         @endforeach

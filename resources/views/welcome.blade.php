@@ -37,77 +37,103 @@
         </div>
     </div>
 
-    <div>
+    <section class="bg-white dark:bg-gray-800">
+        <div class="container px-6 py-8 mx-auto">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div>
 
-    </div>
-    <section>
-            <h1>Teams with minimum one player</h1>
-            @foreach ($teams as $team)
-                @if (count($team->players))
-                    {{ $team->club }} |
-                @endif
-            @endforeach
-        </section>
 
-    <section>
-            <h1>2 Empty Teams</h1>
-            @foreach ($teams as $team)
-                @if (count($team->players) == 0)
-                    {{ $team->club }} |
-                @endif
-        @endforeach
-        </section>
+                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Teams (Min 1 Player)</h1>
 
-    <section>
-        <h1>4 Random Players (No Team)</h1>
-        @foreach ($noTeamRandom as $player)
-            <span>{{ $player->name }} {{ $player->lastname }}</span> |
-        @endforeach
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                        @foreach ($teams as $team)
+                            @if (count($team->players))
+                                {{ $team->club }} |
+                            @endif
+                        @endforeach
+                    </p>
+                </div>
+
+                <div>
+                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">2 Empty Teams</h1>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                        @foreach ($teams as $team)
+                            @if (count($team->players) == 0)
+                                {{ $team->club }} |
+                            @endif
+                        @endforeach
+                    </p>
+                </div>
+                <div>
+                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">4 Random Players(No Team)</h1>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                        @foreach ($noTeamRandom as $player)
+                            <span>{{ $player->name }} {{ $player->lastname }}</span> |
+                        @endforeach
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
-    <section>
-        <h1>4 Random Players</h1>
+
+    <section class="bg-white dark:bg-gray-800">
+        <div class="container px-6 py-8 mx-auto">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div>
+                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">4 Random Players</h1>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">
         @foreach ($withTeamRandom as $player)
             <span>{{ $player->name }} {{ $player->lastname }}</span> |
         @endforeach
-    </section>
-    <section>
-        <h1>2 Teams (Not Full) </h1>
-        @foreach ($teams as $team)
-            @if (count($team->players) && $loop->iteration <= 2)
-                {{ $team->club }} |
-            @endif
-        @endforeach
-    </section>
+                    </p>
+                </div>
 
-    <section >
-        <h1>Teams in Europe</h1>
+                <div>
+                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Teams in Europe</h1>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">
         @foreach ($inEurope as $team)
             <span>{{ $team->club }}</span> |
         @endforeach
+                    </p>
+                </div>
+                <div>
+                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Teams Outside of Europe</h1>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                        @foreach ($noTeamRandom as $player)
+                            <span>{{ $player->name }} {{ $player->lastname }}</span> |
+                        @endforeach
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section >
-        <h1>Teams Outside of Europe</h1>
-        @foreach ($outEurope as $team)
-            <span>{{ $team->club }}</span>  |
-        @endforeach
-    </section>
-
-    <section>
-        <h1>5 Random Female Players</h1>
+        <section class="bg-white dark:bg-gray-800">
+        <div class="container px-6 py-8 mx-auto">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div>
+                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">5 Random Female Players</h1>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">
         @forelse ($womanPlayer as $player)
             <span>{{ $player->prenom }}</span>
         @empty
             <span>No Woman Player</span>
         @endforelse
-    </section>
+                    </p>
+                </div>
 
-    <section>
-        <h1>5 Random Male Players</h1>
+                <div>
+                    <h1 class="mt-4 text-xl font-semibold text-gray-800 dark:text-white">5 Random Male Players</h1>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">
         @foreach ($manPlayer as $player)
             <span>{{ $player->name }}</span> |
         @endforeach
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
+
 
 
 @endsection

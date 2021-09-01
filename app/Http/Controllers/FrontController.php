@@ -17,7 +17,7 @@ class FrontController extends Controller
 
         $womanPlayer = $players->where("sex", "=", "Femme");
         $womanRandom = $womanPlayer->where("team_id", "!=", null);
-        $manPlayer = $players->where("sex", "=", "Homme");
+        $manPlayer = $players->where("sex", "=", "Homme")->random(5);
         $manRandom = $manPlayer->where("team_id", "!=", null);
 
         $noTeam = $players->where('team_id', '==', null);
